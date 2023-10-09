@@ -1,0 +1,27 @@
+.media {
+    border-radius: 50px !important;
+}
+
+.bounce {
+    transition: all 0.3s;
+}
+
+.bounce:hover {
+    transform: scale(1) !important;
+    box-shadow: 1px 1px 8px !important;
+}
+
+a,
+button {
+    align-self: center;
+    border-radius: 50px !important;
+}
+
+p {
+    margin: 0;
+}
+
+a.overlap {
+    z-index: 2;
+    margin-top: -10px !important;
+}

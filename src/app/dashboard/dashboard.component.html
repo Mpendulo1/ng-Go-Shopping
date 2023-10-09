@@ -1,0 +1,53 @@
+<div class="container">
+    <h1 class="text-center">Shopping List</h1>
+    <div class="vstack gap-2">
+        <div
+            class="card-body"
+            *ngFor="let product of product_list; let i = index"
+        >
+            <div class="media bounce d-flex flex-row shadow">
+                <div class="align-self-center d-flex gap-3 m-3">
+                    <p class="text-secondary fs-5">
+                        {{ product._name | uppercase }}
+                    </p>
+                    <p class="text-secondary fs-5">
+                        {{
+                            product._price | currency : "ZAR" : "symbol-narrow"
+                        }}
+                    </p>
+                    <p class="text-secondary fs-5">({{ product._quantity }})</p>
+                </div>
+                <button
+                    (click)="removeProduct(i)"
+                    class="btn btn-outline-secondary ms-auto"
+                >
+                    <i class="fa-regular fa-trash"></i>
+                </button>
+
+                <a
+                    routerLink="/edit/{{ product._name }}"
+                    class="btn btn-outline-secondary mx-3"
+                >
+                    <i class="fa-regular fa-pencil"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col d-flex gap-3 m-3">
+            <p class="text-secondary">
+                <b> {{ total_price | currency : "ZAR" : "symbol-narrow" }}</b>
+            </p>
+            <p class="text-secondary ms-auto">
+                <b>item(s): {{ total_quantity }}</b>
+            </p>
+        </div>
+    </div>
+    <div class="col">
+        <a
+            routerLink="/add"
+            type="button"
+            class="btn btn-outline-secondary position-absolute start-50 translate-middle-x overlap"
+        >
+            <i class="fa fa-plus"></i>
+        </a>
+    </div>
+</div>

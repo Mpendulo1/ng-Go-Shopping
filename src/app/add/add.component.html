@@ -1,0 +1,70 @@
+<div class="container">
+    <h1 class="text-center">{{ page_title }} Product</h1>
+    <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+        <div class="form-group vstack p-3 gap-3">
+            <div class="input-group">
+                <span class="input-group-text" id="name">PRD</span>
+                <input
+                    id="name"
+                    type="text"
+                    placeholder="product"
+                    class="form-control"
+                    formControlName="name"
+                    [ngClass]="{
+                'is-invalid':submitted
+                &&(name.errors?.['required']
+                ||name.errors?.['minlength'])
+                 }"
+                />
+            </div>
+
+            <div class="input-group" id="price">
+                <span class="input-group-text" id="price">ZAR</span>
+                <input
+                    id="price"
+                    type="number"
+                    placeholder="price"
+                    class="form-control"
+                    formControlName="price"
+                    [ngClass]="{
+                  'is-invalid':submitted
+                  &&price.errors?.['required']
+                 }"
+                />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="qty">QTY</span>
+                <input
+                    id="qty"
+                    type="number"
+                    placeholder="quantity"
+                    class="form-control"
+                    formControlName="quantity"
+                    [ngClass]="{
+                    'is-invalid':submitted
+                    &&quantity.errors?.['required']
+                    }"
+                />
+            </div>
+        </div>
+
+        <div class="hstack gap-3">
+            <div>
+                <button type="submit" class="btn add btn-outline-secondary">
+                    <i
+                        *ngIf="page_title == 'Edit'"
+                        class="fa-regular fa-floppy-disk"
+                    ></i>
+                    <i
+                        *ngIf="page_title == 'Add'"
+                        class="fa-regular fa-plus"
+                    ></i>
+                </button>
+            </div>
+            <a routerLink="" type="button" class="btn btn-outline-secondary">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+    </form>
+</div>
